@@ -38,7 +38,7 @@
               <rect x="77" y="36" width="6" height="34" rx="3" fill="#4b5563" />
               <path d="M80 17 C93 34 89 48 80 53 C70 47 68 32 80 17Z" fill="#f97316" opacity="0.82" />
               <path d="M80 27 C87 39 84 47 80 50 C74 46 74 36 80 27Z" fill="#fff7ad" opacity="0.88" />
-              <text id="candle-total-label" x="80" y="115" text-anchor="middle" font-size="16" fill="#713f12" font-family="Inter, Arial, sans-serif">INR 90</text>
+              <text id="candle-total-label" x="80" y="115" text-anchor="middle" font-size="16" fill="#713f12" font-family="Inter, Arial, sans-serif">INR 0</text>
               <text x="80" y="134" text-anchor="middle" font-size="10" fill="#854d0e" font-family="Inter, Arial, sans-serif">per candle</text>
             </g>
           </svg>
@@ -79,7 +79,7 @@
               </div>
               <label class="input-shell">
                 <span>INR</span>
-                <input class="card-input" type="number" min="0" step="0.5" value="25" placeholder="0" />
+                <input class="card-input" type="number" min="0" step="0.5" placeholder="0" />
               </label>
               <p>Actual wax used per candle, not the full slab.</p>
             </article>
@@ -91,7 +91,7 @@
               </div>
               <label class="input-shell">
                 <span>INR</span>
-                <input class="card-input" type="number" min="0" step="0.5" value="0" placeholder="0" />
+                <input class="card-input" type="number" min="0" step="0.5" placeholder="0" />
               </label>
               <p>Jar, tumbler, or glass container cost.</p>
             </article>
@@ -103,7 +103,7 @@
               </div>
               <label class="input-shell">
                 <span>INR</span>
-                <input class="card-input" type="number" min="0" step="0.5" value="5" placeholder="0" />
+                <input class="card-input" type="number" min="0" step="0.5" placeholder="0" />
               </label>
               <p>One wick per candle, including tabs.</p>
             </article>
@@ -115,7 +115,7 @@
               </div>
               <label class="input-shell">
                 <span>INR</span>
-                <input class="card-input" type="number" min="0" step="0.5" value="18" placeholder="0" />
+                <input class="card-input" type="number" min="0" step="0.5" placeholder="0" />
               </label>
               <p>Usually 6-10% of wax weight.</p>
             </article>
@@ -127,7 +127,7 @@
               </div>
               <label class="input-shell">
                 <span>INR</span>
-                <input class="card-input" type="number" min="0" step="0.5" value="3" placeholder="0" />
+                <input class="card-input" type="number" min="0" step="0.5" placeholder="0" />
               </label>
               <p>Dye chips or liquid dye per batch.</p>
             </article>
@@ -139,7 +139,7 @@
               </div>
               <label class="input-shell">
                 <span>INR</span>
-                <input class="card-input" type="number" min="0" step="0.5" value="4" placeholder="0" />
+                <input class="card-input" type="number" min="0" step="0.5" placeholder="0" />
               </label>
               <p>Melter and heating costs divided per candle.</p>
             </article>
@@ -151,7 +151,7 @@
               </div>
               <label class="input-shell">
                 <span>INR</span>
-                <input class="card-input" type="number" min="0" step="0.5" value="20" placeholder="0" />
+                <input class="card-input" type="number" min="0" step="0.5" placeholder="0" />
               </label>
               <p>Pay yourself now, even before hiring help.</p>
             </article>
@@ -163,7 +163,7 @@
               </div>
               <label class="input-shell">
                 <span>INR</span>
-                <input class="card-input" type="number" min="0" step="0.5" value="15" placeholder="0" />
+                <input class="card-input" type="number" min="0" step="0.5" placeholder="0" />
               </label>
               <p>Box, label, ribbon, wrap, and inserts.</p>
             </article>
@@ -178,40 +178,40 @@
 
           <div class="control-row">
             <label for="qty">Candles per batch</label>
-            <input type="number" id="qty" min="1" max="500" value="10" />
+            <input type="number" id="qty" min="1" max="500" placeholder="0" />
           </div>
 
           <div class="control-row">
             <label for="price">Selling price</label>
             <div class="compact-input">
               <span>INR</span>
-              <input type="number" id="price" min="0" value="180" />
+              <input type="number" id="price" min="0" placeholder="0" />
             </div>
           </div>
 
           <div class="metric-grid">
             <div class="metric primary">
               <span>Cost per candle</span>
-              <strong id="total-cost">INR 90.00</strong>
+              <strong id="total-cost">--</strong>
             </div>
             <div class="metric">
               <span>Recommended price</span>
-              <strong id="rec-price">INR 225</strong>
+              <strong id="rec-price">--</strong>
             </div>
             <div class="metric">
               <span>Profit per candle</span>
-              <strong id="profit-per">INR 90.00</strong>
+              <strong id="profit-per">--</strong>
             </div>
             <div class="metric">
               <span>Batch profit</span>
-              <strong id="batch-profit">INR 900</strong>
+              <strong id="batch-profit">--</strong>
             </div>
           </div>
 
           <div class="margin-block">
             <div class="margin-head">
               <span>Profit margin</span>
-              <strong id="margin-pct">50%</strong>
+              <strong id="margin-pct">--</strong>
             </div>
             <div class="profit-bar">
               <div class="profit-fill" id="margin-bar"></div>
@@ -225,106 +225,6 @@
     </section>
   </main>
 
-  <script>
-    const keys = ['wax', 'glass', 'wick', 'fragrance', 'color', 'electricity', 'labour', 'packaging'];
-    const barColors = {
-      wax: '#d97706',
-      glass: '#0891b2',
-      wick: '#f97316',
-      fragrance: '#0f766e',
-      color: '#7c3aed',
-      electricity: '#2563eb',
-      labour: '#be123c',
-      packaging: '#db2777'
-    };
-
-    function formatINR(value, decimals = 0) {
-      return `INR ${Number(value).toFixed(decimals)}`;
-    }
-
-    function getVal(key) {
-      const input = document.querySelector(`.cost-card[data-key="${key}"] input`);
-      return parseFloat(input.value) || 0;
-    }
-
-    function updateCardBars(total) {
-      document.querySelectorAll('.cost-card').forEach((card) => {
-        const key = card.dataset.key;
-        const value = getVal(key);
-        const percent = total > 0 ? Math.round((value / total) * 100) : 0;
-        const existing = card.querySelector('.pct-wrap');
-
-        if (existing) {
-          existing.querySelector('.pct-fill').style.width = `${percent}%`;
-          existing.querySelector('.pct-label').textContent = `${percent}% of total`;
-          return;
-        }
-
-        const wrap = document.createElement('div');
-        wrap.className = 'pct-wrap';
-
-        const bar = document.createElement('div');
-        bar.className = 'pct-track';
-
-        const fill = document.createElement('div');
-        fill.className = 'pct-fill';
-        fill.style.width = `${percent}%`;
-        fill.style.background = barColors[key] || '#64748b';
-
-        const label = document.createElement('span');
-        label.className = 'pct-label';
-        label.textContent = `${percent}% of total`;
-
-        bar.appendChild(fill);
-        wrap.appendChild(bar);
-        wrap.appendChild(label);
-        card.appendChild(wrap);
-      });
-    }
-
-    function calc() {
-      const total = keys.reduce((sum, key) => sum + getVal(key), 0);
-      const qty = parseInt(document.getElementById('qty').value, 10) || 1;
-      const price = parseFloat(document.getElementById('price').value) || 0;
-      const recommended = Math.round(total * 2.5);
-      const rawProfit = price - total;
-      const profitPer = Math.max(0, rawProfit);
-      const batchProfit = profitPer * qty;
-      const margin = price > 0 ? Math.round((profitPer / price) * 100) : 0;
-
-      document.getElementById('total-cost').textContent = formatINR(total, 2);
-      document.getElementById('rec-price').textContent = formatINR(recommended);
-      document.getElementById('profit-per').textContent = formatINR(profitPer, 2);
-      document.getElementById('batch-profit').textContent = formatINR(batchProfit);
-      document.getElementById('margin-pct').textContent = `${margin}%`;
-      document.getElementById('candle-total-label').textContent = formatINR(total);
-
-      const marginBar = document.getElementById('margin-bar');
-      const clampedMargin = Math.max(0, Math.min(100, margin));
-      marginBar.style.width = `${clampedMargin}%`;
-      marginBar.style.background = rawProfit < 0 || margin < 20 ? '#dc2626' : margin < 40 ? '#d97706' : '#0f766e';
-
-      const tipArea = document.getElementById('tip-area');
-      if (price <= 0) {
-        tipArea.innerHTML = '<div class="tip-box warning"><strong>Enter your selling price</strong><span>Profit insights will appear here.</span></div>';
-      } else if (rawProfit < 0) {
-        tipArea.innerHTML = `<div class="tip-box danger"><i class="ti ti-alert-triangle"></i><strong>No profit yet</strong><span>Your cost is ${formatINR(total)} and your price is ${formatINR(price)}. Increase the selling price to at least ${formatINR(total)} to break even, or ${formatINR(recommended)} for the recommended margin.</span></div>`;
-      } else if (margin < 20) {
-        tipArea.innerHTML = `<div class="tip-box warning"><i class="ti ti-alert-circle"></i><strong>Thin margin (${margin}%)</strong><span>Aim for at least 40%. Recommended price: ${formatINR(recommended)}.</span></div>`;
-      } else if (margin < 40) {
-        tipArea.innerHTML = `<div class="tip-box warning"><i class="ti ti-info-circle"></i><strong>Decent margin (${margin}%)</strong><span>Labour and packaging costs can creep up. Consider ${formatINR(recommended)}.</span></div>`;
-      } else {
-        tipArea.innerHTML = `<div class="tip-box success"><i class="ti ti-circle-check"></i><strong>Healthy margin (${margin}%)</strong><span>A batch of ${qty} candles earns ${formatINR(batchProfit)}.</span></div>`;
-      }
-
-      updateCardBars(total);
-    }
-
-    document.querySelectorAll('.cost-card input, #qty, #price').forEach((input) => {
-      input.addEventListener('input', calc);
-    });
-
-    calc();
-  </script>
+  <script src="calculator.js"></script>
 </body>
 </html>
