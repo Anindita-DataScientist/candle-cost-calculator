@@ -287,7 +287,8 @@
       const qty = parseInt(document.getElementById('qty').value, 10) || 1;
       const price = parseFloat(document.getElementById('price').value) || 0;
       const recommended = Math.round(total * 2.5);
-      const profitPer = price - total;
+      const rawProfit = price - total;
+      const profitPer = Math.max(0, rawProfit);
       const batchProfit = profitPer * qty;
       const margin = price > 0 ? Math.round((profitPer / price) * 100) : 0;
 
@@ -301,13 +302,13 @@
       const marginBar = document.getElementById('margin-bar');
       const clampedMargin = Math.max(0, Math.min(100, margin));
       marginBar.style.width = `${clampedMargin}%`;
-      marginBar.style.background = margin < 20 ? '#dc2626' : margin < 40 ? '#d97706' : '#0f766e';
+      marginBar.style.background = rawProfit < 0 || margin < 20 ? '#dc2626' : margin < 40 ? '#d97706' : '#0f766e';
 
       const tipArea = document.getElementById('tip-area');
       if (price <= 0) {
         tipArea.innerHTML = '<div class="tip-box warning"><strong>Enter your selling price</strong><span>Profit insights will appear here.</span></div>';
-      } else if (margin < 0) {
-        tipArea.innerHTML = `<div class="tip-box danger"><i class="ti ti-alert-triangle"></i><strong>Selling at a loss</strong><span>Your cost is ${formatINR(total)} and your price is ${formatINR(price)}. Raise your price to at least ${formatINR(recommended)}.</span></div>`;
+      } else if (rawProfit < 0) {
+        tipArea.innerHTML = `<div class="tip-box danger"><i class="ti ti-alert-triangle"></i><strong>No profit yet</strong><span>Your cost is ${formatINR(total)} and your price is ${formatINR(price)}. Increase the selling price to at least ${formatINR(total)} to break even, or ${formatINR(recommended)} for the recommended margin.</span></div>`;
       } else if (margin < 20) {
         tipArea.innerHTML = `<div class="tip-box warning"><i class="ti ti-alert-circle"></i><strong>Thin margin (${margin}%)</strong><span>Aim for at least 40%. Recommended price: ${formatINR(recommended)}.</span></div>`;
       } else if (margin < 40) {
